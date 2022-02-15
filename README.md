@@ -8,5 +8,6 @@ func main
 	"Hello World"
 	let n: string pop // `n` is now "Hello World"
 	n "!" += // `n` is now "Hello World!"
+	n out // Prints "Hello World!"
 end
 ```
