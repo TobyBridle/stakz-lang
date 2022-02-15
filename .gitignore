@@ -1,4 +1,6 @@
 *.out
 *.out.*
 *.o
+*.exe
 run
+.dccache
