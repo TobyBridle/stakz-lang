@@ -1,7 +1,11 @@
-exec = a.out
+exec = a
 sources = $(wildcard src/*.c)
 objects = $(sources: .c=.o)
-flags = -g -Wall -lm -ldl -fPIC -rdynamic
+ifeq ($(OS),Windows_NT)
+	flags = -g -Wall -lm -fPIC
+else
+	flags = -g -Wall -lm -ldl -fPIC -rdynamic
+endif
 
 $(exec): $(objects)
 	gcc $(objects) $(flags) -o $(exec)
