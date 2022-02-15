@@ -1,5 +1,5 @@
-#ifndef STAX_LEXER_H
-#define STAX_LEXER_H
+#ifndef STAKZ_LEXER_H
+#define STAKZ_LEXER_H
 #include "token.h"
 typedef struct LEXER_STRUCT
 {

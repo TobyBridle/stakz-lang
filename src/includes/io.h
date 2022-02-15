@@ -1,4 +1,4 @@
-#ifndef STAX_IO_H
-#define STAX_IO_H
-char* stax_read_file(const char* filename);
+#ifndef STAKZ_IO_H
+#define STAKZ_IO_H
+char* stakz_read_file(const char* filename);
 #endif

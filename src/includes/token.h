@@ -1,5 +1,5 @@
-#ifndef STAX_TOKEN_H
-#define STAX_TOKEN_H
+#ifndef STAKZ_TOKEN_H
+#define STAKZ_TOKEN_H
 #include <stdlib.h>
 #include <stdio.h>
 
