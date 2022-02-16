@@ -1,4 +1,4 @@
-#include "includes/stax.h"
+#include "includes/stakz.h"
 #include <stdio.h>
 
 int main(int argc, char** argv)
@@ -9,6 +9,6 @@ int main(int argc, char** argv)
         return 1;
     }
     
-    stax_compile_file(argv[1]);
+    stakz_compile_file(argv[1]);
     return 0;
 }
