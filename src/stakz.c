@@ -1,11 +1,11 @@
-#include "includes/stax.h" 
+#include "includes/stakz.h" 
 #include "includes/lexer.h"
 #include "includes/parser.h"
 #include "includes/token.h"
 #include "includes/io.h"
 #include <stdlib.h>
 
-void stax_compile(char* src)
+void stakz_compile(char* src)
 {
     lexer_t* lexer = init_lexer(src);
     /*parser_t* parser = init_parser(lexer);*/
@@ -18,9 +18,9 @@ void stax_compile(char* src)
     }
 }
 
-void stax_compile_file(const char* filename)
+void stakz_compile_file(const char* filename)
 {
-    char* src = stax_read_file(filename);
-    stax_compile(src);
+    char* src = stakz_read_file(filename);
+    stakz_compile(src);
     free(src);   
 }

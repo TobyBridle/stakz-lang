@@ -1,8 +1,8 @@
-# What is STAX?
-**STAX** is a stack-based language with enforced types.
+# What is STAKZ?
+**STAKZ** is a stack-based language with enforced types.
 
 *Example*
-```stax
+```stakz
 func main
 	args [argc: int, argv: string[]] = // Accept 2 arguments into the function 
 	"Hello World"

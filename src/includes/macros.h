@@ -1,5 +1,5 @@
-#ifndef STAX_MACRO_H
-#define STAX_MACRO_H
+#ifndef STAKZ_MACRO_H
+#define STAKZ_MACRO_H
 #define MAX(a, b)\
     a > b ? a : b
 

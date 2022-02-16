@@ -10,7 +10,7 @@
  *
  * @return char*
  */
-char* stax_read_file(const char* filename)
+char* stakz_read_file(const char* filename)
 {
     FILE* fp;
     char* line = NULL;
