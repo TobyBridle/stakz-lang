@@ -1,10 +1,11 @@
 #include "includes/token.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 token_t* init_token(char* tok, int type)
 {
-    token_t* token = malloc(sizeof(struct TOKEN_STRUCT));
+    token_t* token = calloc(1, sizeof(struct TOKEN_STRUCT));
     token->tok = tok;
     token->type = type;
 
