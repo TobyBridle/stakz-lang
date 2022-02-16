@@ -1,4 +1,6 @@
-# What is STAKZ?
+# STAKZ
+
+## What is STAKZ?
 **STAKZ** is a stack-based language with enforced types.
 
 *Example*
