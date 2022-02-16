@@ -4,17 +4,17 @@ objects = $(sources: .c=.o)
 ifeq ($(OS),Windows_NT)
 	flags = -g -Wall -lm -fPIC
 else
-	flags = -g -Wall -lm -ldl -fPIC -rdynamic
+	flags = -g -Wall -lm -ldl -fPIC -rdynamic -fsanitize=address
 endif
 
 $(exec): $(objects)
 	gcc $(objects) $(flags) -o $(exec)
 
-#%.o %.c includes/%.h
-	#gcc -c $(flags) $< -o $@
-
 clean:
 	-rm *.out
+	-rm a.*
+	-rm a
+	-rm a.*.*
 	-rm *.o
 	-rm *.a
 	-rm src/*.o
