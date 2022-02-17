@@ -1,3 +1,5 @@
+<p style="text-align:center"><img src="./icons/icon-alpha.png" alt="icon" width=100 height=100 /></p>
+
 # STAKZ
 
 ## What is STAKZ?
