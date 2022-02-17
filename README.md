@@ -1,4 +1,6 @@
-# <img src="./icons/icon-alpha.png" alt="icon" width=25 height=25 /> STAKZ
+<p align="center" width="100%"><img src="./icons/icon-alpha.png" alt="icon" width=100 height=100 style="display: block; margin: 0 auto" /></p>
+
+# STAKZ
 
 ## What is STAKZ?
 **STAKZ** is a stack-based language with enforced types.
