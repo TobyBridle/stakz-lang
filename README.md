@@ -1,4 +1,4 @@
-<center><img src="./icons/icon-alpha.png" alt="icon" width=100 height=100 /></center>
+<p align="center" width="100%"><img src="./icons/icon-alpha.png" alt="icon" width=100 height=100 style="display: block; margin: 0 auto" /></p>
 
 # STAKZ
 
