@@ -100,16 +100,13 @@ token_t* lexer_parse_id(lexer_t* lexer)
 token_t* lexer_parse_string(lexer_t* lexer)
 {
     char* tok = calloc(1, sizeof(char));
-    lexer_advance(lexer);
 
-    while(isalpha(lexer->c) || isspace(lexer->c))
-    {
+    do {
         tok = realloc(tok, sizeof(char) * (strlen(tok) + 2));
         strcat(tok, (char[]){lexer->c, 0});
-        lexer_advance(lexer); 
-    }
-    
-    lexer_advance(lexer);
+        lexer_advance(lexer);
+    } while(lexer->c != '"' || (lexer->c == '"' && lexer_peek(lexer, -1) == '\\'));
+
     return init_token(tok, TOKEN_STRING);
 }
 
