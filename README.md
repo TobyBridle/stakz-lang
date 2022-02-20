@@ -13,5 +13,22 @@ func main
 	let n: string pop // `n` is now "Hello World"
 	n "!" += // `n` is now "Hello World!"
 	n out // Prints "Hello World!"
-end
+END
 ```
+*Further examples can be found in the `/examples` dir*
+
+---
+
+### Todos
+- [x] Create Lexer
+- [ ] Create Parser
+- [ ] Generate AST from Parser
+- [ ] Generate Assembly from AST
+
+---
+
+**References used for making the Compiler**
+
+For helping decide how to implement the Parser
+- (Shunting Yard Algorithm)[https://en.wikipedia.org/wiki/Shunting-yard_algorithm]
+- (Constructing an Abstract Syntax Tree)[https://stackoverflow.com/questions/1721553/how-to-construct-an-abstract-syntax-tree]

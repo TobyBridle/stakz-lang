@@ -8,31 +8,31 @@ typedef struct TOKEN_STRUCT
     char* tok;
     enum
     {
-	TOKEN_ID,     	  // 0
-	TOKEN_COLON,  	  // :
-	TOKEN_COMMA,   	  // ,
-
-	TOKEN_STRING, 	  // "3"
-	TOKEN_INT,    	  // 3
-	TOKEN_FLOAT,  	  // 3.1
-
-	TOKEN_LPAREN, 	  // (
-	TOKEN_RPAREN, 	  // )
-	TOKEN_LBRACE, 	  // {
-	TOKEN_RBRACE, 	  // }
-	TOKEN_LCOMP,  	  // <
-	TOKEN_RCOMP,  	  // >
-
-	TOKEN_EQUAL,  	  // = 
-	TOKEN_PLUS,   	  // +
-	TOKEN_MINUS,  	  // -
-	TOKEN_MULT,   	  // *
-	TOKEN_DIV,     	  // / 
-	
-	TOKEN_FUNC,       // func
-	TOKEN_IF,         // if
-	TOKEN_END,        // end
-    TOKEN_EOF         // EOF  
+        TOKEN_ID,     	  // 0
+        TOKEN_COLON,  	  // :
+        TOKEN_COMMA,   	  // ,
+        
+        TOKEN_STRING, 	  // "3"
+        TOKEN_INT,    	  // 3
+        TOKEN_FLOAT,  	  // 3.1
+        
+        TOKEN_LPAREN, 	  // (
+        TOKEN_RPAREN, 	  // )
+        TOKEN_LBRACE, 	  // {
+        TOKEN_RBRACE, 	  // }
+        TOKEN_LCOMP,  	  // <
+        TOKEN_RCOMP,  	  // >
+        
+        TOKEN_EQUAL,  	  // = 
+        TOKEN_PLUS,   	  // +
+        TOKEN_MINUS,  	  // -
+        TOKEN_MULT,   	  // *
+        TOKEN_DIV,     	  // / 
+        
+        TOKEN_FUNC,       // func
+        TOKEN_IF,         // if
+        TOKEN_END,        // end
+        TOKEN_EOF         // EOF  
     } type;
 } token_t;
 
