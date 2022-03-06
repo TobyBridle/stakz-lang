@@ -1,4 +1,9 @@
-*.out
+.ccls-cache
+.DS_Store
+asm
+a.dSYM
+src/deprecated
+a
 *.out.*
 *.o
 *.exe

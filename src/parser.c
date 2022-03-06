@@ -24,7 +24,6 @@ void parser_consume(parser_t* parser)
             {
                 list_push(parser->stacks->op, parser->token->tok);
                 // printf("The current token is (%s) and the current token on the stack is (%s)\n", parser->token->tok, (char*) parser->stacks->op->items[parser->stacks->op->length - 1]);
-                printf("[Parser] Calling PARSE OPERATION AT POS (%d) and char (%c)\n", parser->lexer->i, parser->lexer->c);
                 lexer_parse_operation((char) parser->stacks->op->items[parser->stacks->op->length - 1], parser->lexer->pos);
             }
     }
