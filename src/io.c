@@ -29,12 +29,17 @@ char* stakz_read_file(const char* filename)
 
     while((read = getline(&line, &len, fp)) != -1)
     {
-        buffer = (char*) realloc(buffer, (strlen(buffer) + strlen(line) + 1) * sizeof(char));
-        strcat(buffer, line);
+        buffer = (char*) realloc(buffer, (strlen(buffer) + strlen(line) + 2) * sizeof(char));
+        char* ret = calloc(strlen(line) + 2, sizeof(char));
+        strcat(ret, line);
+        strcat(ret, (char[]){'\n', 0});
+
+        strcat(buffer, ret);
+        free(ret);
     }
 
     fclose(fp);
     if(line) free(line);
-
+    
     return buffer;
 }

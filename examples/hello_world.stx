@@ -1,3 +1,2 @@
-func main
-    "Hello, World" out
+func main "Hello, World" out
 end

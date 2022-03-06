@@ -34,8 +34,14 @@ typedef struct TOKEN_STRUCT
         TOKEN_END,        // end
         TOKEN_EOF         // EOF  
     } type;
+    enum
+    {
+        TOKEN_OPERATOR,
+        TOKEN_OUTPUT,
+    } stack_type;
 } token_t;
 
-token_t* init_token(char* tok, int type);
+token_t* init_token(char* tok, int type, int stack_type);
+int token_precedence(token_t* tok, token_t* comp);
 char* token_to_string(int type);
 #endif

@@ -3,13 +3,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-token_t* init_token(char* tok, int type)
+token_t* init_token(char* tok, int type, int stack_type)
 {
     token_t* token = calloc(1, sizeof(struct TOKEN_STRUCT));
     token->tok = tok;
     token->type = type;
+    token->stack_type = stack_type;
 
     return token;
+}
+
+int token_precedence(token_t* tok, token_t* comp)
+{
+    if(tok->stack_type != TOKEN_OPERATOR) return -1;
+    if(tok->type == TOKEN_MINUS) return 0;
+    if(tok->type < comp->type) return 0;
+    return 1; // The `tok` param has a higher precendence than the `comp` param
 }
 
 char* token_to_string(int type)
@@ -47,3 +56,28 @@ char* token_to_string(int type)
             exit(1);
     }
 }
+
+// char token_to_value(int type)
+// {
+//     switch(type)
+//     {
+//       case TOKEN_COLON:   return ':';
+//       case TOKEN_COMMA:   return ',';
+
+//       case TOKEN_LPAREN:  return '(';
+//       case TOKEN_RPAREN:  return ')';
+//       case TOKEN_LBRACE:  return '{';
+//       case TOKEN_RBRACE:  return '}';
+//       case TOKEN_LCOMP:   return '<';
+//       case TOKEN_RCOMP:   return '>';
+
+//       case TOKEN_EQUAL:   return '=';
+//       case TOKEN_PLUS:    return '+';
+//       case TOKEN_MINUS:   return '-';
+//       case TOKEN_MULT:    return '*';
+//       case TOKEN_DIV:     return '/';
+//       default:
+//           printf("[Lexer] Invalid Token Type (%d)\n", type);
+//           exit(1);
+//     } 
+// }

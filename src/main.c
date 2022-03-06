@@ -1,5 +1,6 @@
 #include "includes/stakz.h"
 #include "includes/list.h"
+#include "includes/token.h"
 #include <stdio.h>
 
 int main(int argc, char** argv)
