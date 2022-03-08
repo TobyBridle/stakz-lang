@@ -20,7 +20,7 @@ char* stakz_read_file(const char* filename)
     fp = fopen(filename, "rb");
     if(fp == NULL)
     {
-        printf("Could not read file `%s`\n", filename);
+        fprintf(stderr, "Could not read file `%s`\n", filename);
         exit(1);
     }
 

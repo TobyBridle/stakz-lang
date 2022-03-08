@@ -52,7 +52,7 @@ char* token_to_string(int type)
         case TOKEN_END:     return "TOKEN_END";
         case TOKEN_EOF:     return "TOKEN_EOF";
         default:
-            printf("[Lexer] Invalid Token Type (%d)\n", type);
+            fprintf(stderr, "[Lexer] Invalid Token Type (%d)\n", type);
             exit(1);
     }
 }

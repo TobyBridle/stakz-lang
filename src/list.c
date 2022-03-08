@@ -4,7 +4,7 @@
 
 list_t* init_list(size_t item_mem_size)
 {
-	list_t* list = malloc(sizeof(struct LIST_STRUCT));
+	list_t* list = calloc(1, sizeof(struct LIST_STRUCT));
 	list->item_mem_size = item_mem_size;
 	list->items = NULL;
 	list->length = 0;

@@ -19,13 +19,13 @@ void parser_consume(parser_t* parser)
 {
     parser->token = lexer_next_token(parser->lexer);
     
-    if(parser->token->stack_type == TOKEN_OPERATOR && parser->stacks->op != NULL && parser->token->type != TOKEN_EOF)
-    {
-            {
-                list_push(parser->stacks->op, parser->token->tok);
-                // printf("The current token is (%s) and the current token on the stack is (%s)\n", parser->token->tok, (char*) parser->stacks->op->items[parser->stacks->op->length - 1]);
-                lexer_parse_operation((char) parser->stacks->op->items[parser->stacks->op->length - 1], parser->lexer->pos);
-            }
-    }
+    // if(parser->token->stack_type == TOKEN_OPERATOR && parser->stacks->op != NULL && parser->token->type != TOKEN_EOF)
+    // {
+    //         {
+    //             list_push(parser->stacks->op, parser->token->tok);
+    //             // printf("The current token is (%s) and the current token on the stack is (%s)\n", parser->token->tok, (char*) parser->stacks->op->items[parser->stacks->op->length - 1]);
+    //             lexer_parse_operation((char) parser->stacks->op->items[parser->stacks->op->length - 1], parser->lexer->pos);
+    //         }
+    // }
     if(parser->token->stack_type != TOKEN_OPERATOR) list_push(parser->stacks->output, parser->token->tok);
 }

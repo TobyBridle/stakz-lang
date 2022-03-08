@@ -8,9 +8,12 @@
 #include <stdio.h>
 #include <string.h>
 
-void stakz_compile(char* src)
+void stakz_compile(char* src, char* filename)
 {
-    pos_t* pos       = calloc(2, sizeof(size_t));
+    pos_t* pos       = calloc(1, sizeof(struct STAKZ_IO_POSITION_STRUCT));
+    pos->lineNumber  = 1;
+    pos->filename    = filename;
+
     lexer_t* lexer   = init_lexer(src, pos);
     parser_t* parser = init_parser(lexer);
     void* popped     = NULL;
@@ -22,22 +25,13 @@ void stakz_compile(char* src)
     }
     
     // Pop off of Stack
-    do
-    {
-        popped = parser->stacks->op->items[0];
-        list_push(parser->stacks->output, popped);
-        list_pop(parser->stacks->op);
-    }
-    while(popped != NULL);
-    
-    for(size_t i = 0; i < parser->stacks->output->length - 1; ++i) printf("%s ", (char*) parser->stacks->output->items[i]);
-    printf("(TOKEN_EOF)\n");
+    if(parser->stacks->op->length < 1 && parser->stacks->output->length < 1) exit(0);
 }
 
 void stakz_compile_file(const char* filename)
 {
     char* src = stakz_read_file(filename);
-    printf("\033[1;4;35mCompiling %s\n\033[m", filename);
-    stakz_compile(src);
+    printf("\033[1;4;35mSource File: %s\033[m\t\033[1;4;33mTotal File Size: %ld Bytes\n\n\033[m", filename, (sizeof(char) * (strlen(src) + 1)));
+    stakz_compile(src, (char*) filename);
     free(src);
 }

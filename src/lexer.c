@@ -86,6 +86,12 @@ token_t* lexer_next_token(lexer_t* lexer)
             lexer_advance(lexer);
         }
         
+        // Add Lexer for Comments
+        // if(lexer->c == '#')
+        // {
+            // return lexer_advance_with(lexer, lexer_parse_comment(lexer));
+        // }
+        
         if(lexer->c == '"')
         {
             return lexer_advance_with(lexer, lexer_parse_string(lexer));
@@ -100,11 +106,9 @@ token_t* lexer_next_token(lexer_t* lexer)
         {
             return lexer_advance_with(lexer, lexer_parse_number(lexer));
         }
-        
-        printf("[Program] Advancing with TOKEN (%c)\n", lexer->c);
         return lexer_advance_with(lexer, lexer_parse_operation(lexer->c, lexer->pos));
     }
-    return init_token(0, TOKEN_EOF, TOKEN_OPERATOR);
+    return init_token("-1", TOKEN_EOF, TOKEN_OPERATOR);
 }
 
 /**
@@ -123,10 +127,7 @@ token_t* lexer_parse_id(lexer_t* lexer)
     }
     
     // Check for Keywords (e.g IF)
-    if(strcmp(tok, "if") == 0) return init_token(tok, TOKEN_IF, TOKEN_OPERATOR);
-    if(strcmp(tok, "end") == 0) return init_token(tok, TOKEN_END, TOKEN_OPERATOR);
-    
-    return init_token(tok, TOKEN_ID, TOKEN_OUTPUT);
+    return init_token(tok, TOKEN_ID, TOKEN_OPERATOR);
 }
 
 // TODO:
@@ -187,9 +188,9 @@ token_t* lexer_parse_operation(char tok, pos_t* pos)
         case '/': return init_token("/", TOKEN_DIV, TOKEN_OPERATOR);
         case '=': return init_token("=", TOKEN_EQUAL, TOKEN_OPERATOR);
         default:
-            printf("\033[1;31m[Lexer] Unexpected Character `%c` Line: %ld\tChar: %ld\n\033[m", tok, pos->lineNumber, pos->charNumber);
+            fprintf(stderr, "\033[1;31m[Lexer] %s:%ld:%ld: Unexpected Character `%c` (ASCII: %d)\n\033[m", pos->filename, pos->lineNumber, pos->charNumber, tok, tok);
             exit(1);
     }
-    printf("[Lexer] Something went wrong when parsing the operation `%d`\n", tok);
+    fprintf(stderr, "\033[1;31m[Lexer] Something went wrong when parsing the operation `%d`\n", tok);
     exit(1);
 }
