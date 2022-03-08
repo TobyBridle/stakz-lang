@@ -51,9 +51,7 @@ void lexer_advance(lexer_t* lexer)
 void lexer_skip_whitespace(lexer_t* lexer)
 {
     while(isblank(lexer->c) != 0)
-    {
         lexer_advance(lexer);
-    }
 }
 
 /**
@@ -75,16 +73,9 @@ token_t* lexer_advance_with(lexer_t* lexer, token_t* token)
 */
 token_t* lexer_next_token(lexer_t* lexer) 
 {
-    while(lexer->c != '\0')
+    while(lexer->c != 0)
     {
         lexer_skip_whitespace(lexer);
-        
-        if(lexer->c == '\n')
-        {
-            lexer->pos->lineNumber += 1;
-            lexer->pos->charNumber = 0;
-            lexer_advance(lexer);
-        }
         
         // Add Lexer for Comments
         // if(lexer->c == '#')
@@ -106,7 +97,15 @@ token_t* lexer_next_token(lexer_t* lexer)
         {
             return lexer_advance_with(lexer, lexer_parse_number(lexer));
         }
-        return lexer_advance_with(lexer, lexer_parse_operation(lexer->c, lexer->pos));
+
+        if(lexer->c == '\n')
+        {
+            lexer->pos->lineNumber += 1;
+            lexer->pos->charNumber = 0;
+            lexer_advance(lexer);
+        }
+
+        if(lexer_peek(lexer, 1) != 0) return lexer_advance_with(lexer, lexer_parse_operation(lexer->c, lexer->pos));
     }
     return init_token("-1", TOKEN_EOF, TOKEN_OPERATOR);
 }
