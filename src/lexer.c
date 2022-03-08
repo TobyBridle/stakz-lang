@@ -6,6 +6,8 @@
 #include "includes/macros.h"
 #include "includes/io.h"
 
+#define COMMENT_SYMBOL '#'
+
 lexer_t* init_lexer(char* src, pos_t* pos)
 {
     lexer_t* lexer = calloc(1, sizeof(struct LEXER_STRUCT));
@@ -51,7 +53,38 @@ void lexer_advance(lexer_t* lexer)
 void lexer_skip_whitespace(lexer_t* lexer)
 {
     while(isblank(lexer->c) != 0)
+    {
         lexer_advance(lexer);
+    }
+}
+
+/**
+* Advances until a newline
+* @param lexer_t* lexer
+*/
+void lexer_skip_newline(lexer_t* lexer)
+{
+    if(lexer->c == '\n')
+    {
+        lexer->pos->lineNumber += 1;
+        lexer->pos->charNumber = -1;
+        lexer_advance(lexer);
+    }
+    lexer_advance(lexer);
+}
+
+/**
+* Just ignores the comment until a newline
+* @param lexer_t* lexer
+*/
+void lexer_skip_comment(lexer_t* lexer)
+{
+    lexer_advance(lexer);
+    while(lexer->c  != '\n')
+    {
+        lexer_advance(lexer);
+    }
+    lexer_skip_newline(lexer);
 }
 
 /**
@@ -76,18 +109,16 @@ token_t* lexer_next_token(lexer_t* lexer)
     while(lexer->c != 0)
     {
         lexer_skip_whitespace(lexer);
-        
-        // Add Lexer for Comments
-        // if(lexer->c == '#')
-        // {
-            // return lexer_advance_with(lexer, lexer_parse_comment(lexer));
-        // }
-        
         if(lexer->c == '"')
         {
             return lexer_advance_with(lexer, lexer_parse_string(lexer));
         }
         
+        if(lexer->c == COMMENT_SYMBOL)
+        {
+            lexer_skip_comment(lexer);
+            continue;
+        }
         if(isalpha(lexer->c) != 0)
         {
             return lexer_advance_with(lexer, lexer_parse_id(lexer));
@@ -96,13 +127,6 @@ token_t* lexer_next_token(lexer_t* lexer)
         if(isdigit(lexer->c) != 0)
         {
             return lexer_advance_with(lexer, lexer_parse_number(lexer));
-        }
-
-        if(lexer->c == '\n')
-        {
-            lexer->pos->lineNumber += 1;
-            lexer->pos->charNumber = 0;
-            lexer_advance(lexer);
         }
 
         if(lexer_peek(lexer, 1) != 0) return lexer_advance_with(lexer, lexer_parse_operation(lexer->c, lexer->pos));

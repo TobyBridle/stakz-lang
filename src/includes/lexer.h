@@ -16,6 +16,8 @@ lexer_t* init_lexer(char* src, pos_t* pos);
 
 void lexer_advance(lexer_t* lexer);
 void lexer_skip_whitespace(lexer_t* lexer);
+void lexer_skip_comment(lexer_t* lexer);
+void lexer_skip_newline(lexer_t* lexer);
 void lexer_skip_with(lexer_t* lexer);
 char lexer_peek(lexer_t* lexer, int offset);
 

@@ -32,7 +32,6 @@ typedef struct TOKEN_STRUCT
         TOKEN_FUNC,       // func
         TOKEN_IF,         // if
         TOKEN_END,        // end
-        TOKEN_COMMENT,    // #
         TOKEN_EOF         // EOF  
     } type;
     enum
