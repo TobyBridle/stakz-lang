@@ -38,13 +38,7 @@ $ ./stakz
 
 *Example*
 ```stakz
-func main
-	args [argc: int, argv: string[]] = // Accept 2 arguments into the function 
-	"Hello World"
-	let n: string pop // `n` is now "Hello World"
-	n "!" += // `n` is now "Hello World!"
-	n out // Prints "Hello World!"
-END
+"Hello, World!" out
 ```
 *Further examples can be found in the `/examples` dir*
 
@@ -53,7 +47,7 @@ END
 ### Todos
 - [x] Create Lexer
 - [x] Create Parser
-- [x ] Generate Assembly from Parser
+- [x] Generate Assembly from Parser
 
 ---
 
