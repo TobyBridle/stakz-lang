@@ -186,14 +186,26 @@ token_t* lexer_parse_string(lexer_t* lexer)
 token_t* lexer_parse_number(lexer_t* lexer)
 {
     char* tok = calloc(1, sizeof(char));
-    while(isdigit(lexer->c))
+    int is_float = 0;
+    int token_type = TOKEN_INT;
+    while(isdigit(lexer->c) || lexer->c == '.')
     {
+        if(lexer->c == '.')
+        {
+            if(is_float == 1) 
+            {
+                fprintf(stderr, "\033[1;31m[Lexer] %s:%ld:%ld: Erroneous decimal point Character `.` (ASCII: %d)\n\033[m", lexer->pos->filename, lexer->pos->lineNumber, lexer->pos->charNumber+1, '.');
+                exit(1);
+            }
+            is_float = 1;
+            token_type = TOKEN_FLOAT;
+        }
         tok = realloc(tok, sizeof(char) * (strlen(tok) + 2));
         strcat(tok, (char[]){lexer->c, 0});
         lexer_advance(lexer); 
     }
     
-    return init_token(tok, TOKEN_INT, TOKEN_OUTPUT);
+    return init_token(tok, token_type, TOKEN_OUTPUT);
 }
 
 /**

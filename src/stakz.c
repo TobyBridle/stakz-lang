@@ -11,7 +11,8 @@
 void stakz_compile(char* src, char* filename)
 {
     pos_t* pos       = calloc(1, sizeof(struct STAKZ_IO_POSITION_STRUCT));
-    pos->lineNumber  = 1;
+    pos->lineNumber  = 0;
+    pos->charNumber = 1;
     pos->filename    = filename;
 
     lexer_t* lexer   = init_lexer(src, pos);
@@ -22,7 +23,7 @@ void stakz_compile(char* src, char* filename)
         parser_consume(parser);
         printf("[Program] TOKEN TYPE IS (%s) and TOKEN VAL IS (%s)\n", token_to_string(parser->token->type), parser->token->tok);
     }
-    fprintf(parser->file, "mov    X0, #0\n\tmov    X16, #1\n\tsvc    #0x80\n\n// Variables\n");
+    // fprintf(parser->file, "mov    X0, #0\n\tmov    X16, #1\n\tsvc    #0x80\n\n// Variables\n");
     
     for(ssize_t i = 0; i < parser->var_count; ++i)
     {

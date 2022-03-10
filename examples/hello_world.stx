@@ -1,2 +1,3 @@
 # Simple Hello World Program in Stackz
-"Hello World\n" out
+"Hello, World!" out
+return

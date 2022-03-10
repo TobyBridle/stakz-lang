@@ -9,7 +9,8 @@ typedef struct STAKZ_ASM_T
         STDOUT,
         VAR,
         RETURN,
-        ADDITION
+        ADDITION,
+        SUBTRACTION
     } format;
 } asm_t;
 

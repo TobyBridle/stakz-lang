@@ -1,3 +1,2 @@
 # Simple Addition Program which returns the result
-5 4 +
-return
+100 20 + return

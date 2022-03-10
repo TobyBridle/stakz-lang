@@ -5,6 +5,13 @@
 #include "queue.h"
 #include "token.h"
 
+struct STAKZ_REGISTERS
+{
+    int W0;
+    int NONE;
+    int RETURN;
+} STAKZ_REGISTERS;
+
 typedef struct STAKZ_PARSER_STACKS
 {
     list_t* op;
@@ -17,6 +24,7 @@ typedef struct STAKZ_PARSER
     lexer_t*  lexer;
     token_t*  token;
     stacks_t* stacks;
+    struct STAKZ_REGISTERS set_registers;
     ssize_t   var_count;
     FILE*     file;
 } parser_t;
