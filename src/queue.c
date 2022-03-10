@@ -5,7 +5,6 @@
 void enqueue(node_t** head, void* value)
 {
     node_t* node = malloc(sizeof(node_t));
-    node_t* curr;
     node->value = value;
     node->next = *head;
     

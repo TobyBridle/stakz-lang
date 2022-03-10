@@ -28,6 +28,10 @@ asm_t* parser_parse_keyword(char* token)
 {
     if(!strcmp(token, "out"))
         return init_asm("mov    X0, #1\n\t", STDOUT);
+    if(!strcmp(token, "+"))
+        return init_asm("additino", ADDITION);
+    if(!strcmp(token, "return"))
+        return init_asm("mov    X0, #%d\n\tmov    X16, #1\n\tsvc    #0x80\n\n\t", RETURN);
     return init_asm(token, -1);
 }
 
@@ -60,10 +64,23 @@ void parser_consume(parser_t* parser)
     
                     list_push(parser->stacks->vars, var_name);
                     break;
+                case ADDITION:
+                    break;
+                case RETURN:
+                    ;
+                    char* ci = (char*) calloc((strlen(keyword->cmd) + strlen(parser->stacks->output->value) + 2), sizeof(char));
+                    char* np;
+                    long return_code = strtol(parser->stacks->output->value, &np, 10);
+
+                    sprintf(ci, keyword->cmd, return_code);
+                    fprintf(parser->file, "%s", ci);
+                    free(ci);
+                    break;
                 default:
                     printf("\033[1;4;31m[Parser] Symbol `%s` not recognised!\033[m\n", keyword->cmd);
                     exit(1);
             }
+            free(keyword);
     }
     if(parser->token->stack_type != TOKEN_OPERATOR) enqueue(&parser->stacks->output, parser->token->tok);
 }

@@ -16,7 +16,6 @@ void stakz_compile(char* src, char* filename)
 
     lexer_t* lexer   = init_lexer(src, pos);
     parser_t* parser = init_parser(lexer);
-    void* popped     = NULL;
     
     while(parser->token->type != TOKEN_EOF)
     {

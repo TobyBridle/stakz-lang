@@ -1,1 +1,3 @@
-A + B * C - D
+# Simple Addition Program which returns the result
+5 4 +
+return

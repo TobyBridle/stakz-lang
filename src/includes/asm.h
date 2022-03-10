@@ -7,7 +7,9 @@ typedef struct STAKZ_ASM_T
     enum
     {
         STDOUT,
-        VAR
+        VAR,
+        RETURN,
+        ADDITION
     } format;
 } asm_t;
 
