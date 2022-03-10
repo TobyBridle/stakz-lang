@@ -18,7 +18,13 @@ clean:
 	-rm *.o
 	-rm *.a
 	-rm src/*.o
+	-rm *.s
+	-rm stakz
+	-rm *.log
 
 lint:
 	clang-tidy src/*.c src/includes/*.h
 	
+build:
+	as -o stakz.o stakz.s
+	ld -o stakz stakz.o -lSystem -syslibroot `xcrun -sdk macosx --show-sdk-path` -e _start -arch arm64

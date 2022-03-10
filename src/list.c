@@ -30,7 +30,7 @@ void list_pop(list_t* list)
 	// list->items is of type void**
 	if(list->length != 0)
 	{
-		list->items += 1;
+		list->items+=1;
 		list->length -= 1;
 	}
 }

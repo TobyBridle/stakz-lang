@@ -64,13 +64,12 @@ void lexer_skip_whitespace(lexer_t* lexer)
 */
 void lexer_skip_newline(lexer_t* lexer)
 {
-    if(lexer->c == '\n')
+    while(lexer->c == '\n')
     {
         lexer->pos->lineNumber += 1;
         lexer->pos->charNumber = -1;
         lexer_advance(lexer);
     }
-    lexer_advance(lexer);
 }
 
 /**
@@ -79,7 +78,7 @@ void lexer_skip_newline(lexer_t* lexer)
 */
 void lexer_skip_comment(lexer_t* lexer)
 {
-    lexer_advance(lexer);
+    // lexer_advance(lexer);
     while(lexer->c  != '\n')
     {
         lexer_advance(lexer);
@@ -108,17 +107,19 @@ token_t* lexer_next_token(lexer_t* lexer)
 {
     while(lexer->c != 0)
     {
+        lexer_skip_newline(lexer);
         lexer_skip_whitespace(lexer);
+
         if(lexer->c == '"')
         {
             return lexer_advance_with(lexer, lexer_parse_string(lexer));
         }
-        
         if(lexer->c == COMMENT_SYMBOL)
         {
             lexer_skip_comment(lexer);
             continue;
         }
+
         if(isalpha(lexer->c) != 0)
         {
             return lexer_advance_with(lexer, lexer_parse_id(lexer));

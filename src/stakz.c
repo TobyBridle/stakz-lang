@@ -23,9 +23,13 @@ void stakz_compile(char* src, char* filename)
         parser_consume(parser);
         printf("[Program] TOKEN TYPE IS (%s) and TOKEN VAL IS (%s)\n", token_to_string(parser->token->type), parser->token->tok);
     }
+    fprintf(parser->file, "mov    X0, #0\n\tmov    X16, #1\n\tsvc    #0x80\n\n// Variables\n");
     
-    // Pop off of Stack
-    if(parser->stacks->op->length < 1 && parser->stacks->output->length < 1) exit(0);
+    for(ssize_t i = 0; i < parser->var_count; ++i)
+    {
+        fprintf(parser->file, ".align 16\n%s\n", (char*) parser->stacks->vars->items[i]);
+        free(parser->stacks->vars->items[i]);
+    }
 }
 
 void stakz_compile_file(const char* filename)
