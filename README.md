@@ -14,26 +14,26 @@ Create a file, e.g `test.stx`. Write some stakz code inside of it (check out the
 
 **Step 2**
 Run `make` to create an executable of the compiler.
-```terminal
-$	make
+```console
+$ make
 ```
 
 **Step 3**
 Once the compiler has been made, run it:
-```terminal
-$	./a <path-to-file>
+```console
+$ ./a <path-to-file>
 ```
 
 **Step 4**
 The previous step will have generated the assembly for your fantastic program. Now all you need to do is build it and you'll be able to run it!
-```terminal
-$	make build
+```console
+$ make build
 ```
 
 **Step 5 (The best one)**
 Run your program!
-```terminal
-$	./stakz
+```console
+$ ./stakz
 ```
 
 *Example*
