@@ -3,7 +3,7 @@
 # STAKZ
 
 ## What is STAKZ?
-**STAKZ** is a stack-based language with enforced types created for use on the [Apple M1 Processor](https://en.wikipedia.org/wiki/Apple_M1).
+**STAKZ** is a stack-based language with enforced types, created for use on the [Apple M1 Processor](https://en.wikipedia.org/wiki/Apple_M1).
 
 *Example*
 ```stakz
