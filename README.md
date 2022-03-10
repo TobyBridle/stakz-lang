@@ -49,6 +49,8 @@ $ ./stakz
 - [x] Create Lexer
 - [x] Create Parser
 - [x] Generate Assembly from Parser
+- [ ] Optimise the Compiler
+- [ ] Add more features (highest priority being modification of stack variables and the ability to `pop` elements from the stack)
 
 ---
 
