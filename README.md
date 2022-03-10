@@ -5,6 +5,37 @@
 ## What is STAKZ?
 **STAKZ** is a stack-based language with enforced types, created for use on the [Apple M1 Processor](https://en.wikipedia.org/wiki/Apple_M1).
 
+## How do I run a STAKZ Program?
+First, you'll need to be using a variant of the Apple M1 chip. If you're not, unfortunately, you can't run the compiled binary.
+If you are on a variant of the M1, congrats, you can continue!
+
+**Step 1**
+Create a file, e.g `test.stx`. Write some stakz code inside of it (check out the `/examples` dir for some basic examples).
+
+**Step 2**
+Run `make` to create an executable of the compiler.
+```terminal
+$	make
+```
+
+**Step 3**
+Once the compiler has been made, run it:
+```terminal
+$	./a <path-to-file>
+```
+
+**Step 4**
+The previous step will have generated the assembly for your fantastic program. Now all you need to do is build it and you'll be able to run it!
+```terminal
+$	make build
+```
+
+**Step 5 (The best one)**
+Run your program!
+```terminal
+$	./stakz
+```
+
 *Example*
 ```stakz
 func main
