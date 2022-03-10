@@ -1,6 +1,7 @@
 <p align="center" width="100%"><img src="./icons/icon-alpha.png" alt="icon" width=100 height=100 style="display: block; margin: 0 auto" /></p>
 
 # STAKZ
+*Disclaimer: This language was not intended to be used for anything other than a learning experience and a bit of fun. In it's current form, do not use it for **anything** other than that.*
 
 ## What is STAKZ?
 **STAKZ** is a stack-based language with enforced types, created for use on the [Apple M1 Processor](https://en.wikipedia.org/wiki/Apple_M1).
