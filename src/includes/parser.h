@@ -21,6 +21,8 @@ typedef struct STAKZ_PARSER
     stacks_t* stacks;
     ssize_t   var_count;
     FILE*     file;
+
+    int has_return;
 } parser_t;
 
 parser_t* init_parser(lexer_t* lexer);
