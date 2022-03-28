@@ -57,6 +57,11 @@ $ ./stakz
 **References used for making the Compiler**
 
 For helping decide how to implement the Parser
+
+<u>The Parser</u>
 - [Designing and Implementing a Syntactic Parser](https://www.jstor.org/stable/24147875?seq=1#metadata_info_tab_contents)
 - [Shunting Yard Algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm)
 - [Constructing an Abstract Syntax Tree](https://stackoverflow.com/questions/1721553/how-to-construct-an-abstract-syntax-tree)
+
+<u>ARM64 Assembly</u>
+- [Callous Coder](https://www.youtube.com/c/CallousCoder)

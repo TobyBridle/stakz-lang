@@ -2,13 +2,15 @@
 #define STAKZ_PARSER_H
 #include "lexer.h"
 #include "list.h"
+#include "stack.h"
 #include "queue.h"
 #include "token.h"
 
 typedef struct STAKZ_PARSER_STACKS
 {
-    list_t* op;
+    stck_t* op;
     node_t* output;  
+    node_t* output_token_type;  
     list_t* vars;
 } stacks_t;
 

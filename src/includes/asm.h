@@ -13,6 +13,6 @@ typedef struct STAKZ_ASM_T
     } format;
 } asm_t;
 
-asm_t* init_asm(char* cmd, int format);
+// int init_asm(int format);
 char* format_to_string(int format);
 #endif

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-asm_t* init_asm(char* cmd, int format)
+/* int init_asm(char* token)
 {
     asm_t* line  = calloc(1, sizeof(struct STAKZ_ASM_T));
     line->cmd    = calloc(strlen(cmd), sizeof(char));
@@ -10,7 +10,7 @@ asm_t* init_asm(char* cmd, int format)
     line->format = format;
     
     return line;
-}
+} */
 
 char* format_to_string(int format)
 {
